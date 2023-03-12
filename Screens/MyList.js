@@ -1,12 +1,13 @@
 import { SafeAreaView, ScrollView, StyleSheet} from 'react-native';
 import React from 'react'
 import Graph from '../Components/Graph';
+import { LinearGradient } from 'react-native-svg';
+
 
 export default function MyList() {
 
   return (
-    
-      <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={{ flexGrow: 1, justifyContent: 'center',padding:10 }}>
+      <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={{ flexGrow: 1, justifyContent: 'center',padding:10,paddingVertical:70 }}>
        <SafeAreaView>
         <Graph title="BTC" price={[1220, 1245, 1228,1233,1244, 1280, 1299, 1243]} timestamp={[ -3, -2, -1,"Today",1,2,3]}/>
         <Graph title="ETH" price={[343, 399, 380,344,333, 328, 345, 320]} timestamp={[ -3, -2, -1,"Today",1,2,3]}/>
