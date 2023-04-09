@@ -2,7 +2,6 @@ import { View, Text} from 'react-native'
 import React from 'react'
 import { Dimensions } from "react-native";
 import { LineChart } from 'react-native-chart-kit';
-
 const screenWidth = Dimensions.get("window").width;
 
 export default function Graph({price, timestamp,title, fromDetails, fromTop}) {
