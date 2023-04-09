@@ -2,7 +2,7 @@ import { ScrollView,View, Text } from 'react-native'
 import React from 'react'
 import Graph from './Graph'
 import Chart from './Chart'
-
+import Bar from './Bar'
 export default function Details() {
   return (
     <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={{ flexGrow: 1,padding:10}}>
@@ -25,6 +25,8 @@ export default function Details() {
       <Text style={{alignSelf:"center",fontSize:25,marginTop: 20,}}>Performance graph</Text>
      <Graph  price={[1220, 1245, 1228,1233,1244, 1280, 1299, 1243]} timestamp={[ -3, -2, -1,"Today",1,2,3]} fromDetails/>
      <Chart/>
+     <Text style={{alignSelf:"center",fontSize:25,marginTop: 20,}}>Last 6 months trend</Text>
+     <Bar/>
       </ScrollView>
   )
 }

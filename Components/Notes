@@ -1,0 +1,11 @@
+//Required Form Of Data:
+/*
+title="BTC" 
+price={[1220, 1245, 1228,1233,1244, 1280, 1299, 1243]}
+timestamp={[ -3, -2, -1,"Today",1,2,3]}
+*/
+
+//What is the timestamp and how will it be fetched?
+//How should the search work?
+//User Protected / Spacific info
+//Add a simulator ?

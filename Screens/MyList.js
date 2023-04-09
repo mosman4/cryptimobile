@@ -1,7 +1,7 @@
 import { SafeAreaView, ScrollView, StyleSheet} from 'react-native';
 import React from 'react'
 import Graph from '../Components/Graph';
-import { LinearGradient } from 'react-native-svg';
+
 
 
 export default function MyList() {

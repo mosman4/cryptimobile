@@ -13,7 +13,7 @@ const Tab = createBottomTabNavigator()
 function Tabs() {
   return(
     <Tab.Navigator>
-      <Tab.Screen name={"MyList"} component={MyList} options={{title: "My List",headerShown: false, tabBarIcon: ({ color, size }) => (<Ionicons name="home-outline" size={size} color={color} />),}}/>
+      <Tab.Screen name={"MyList"} component={MyList} options={{title: "My List",headerShown: false, tabBarIcon: ({ color, size }) => (<Ionicons name="albums-outline" size={size} color={color} />),}}/>
       <Tab.Screen name={"Search"} component={Search} options={{title: "Search",headerShown: false, tabBarIcon: ({ color, size }) => (<Ionicons name="search-outline" size={size} color={color} />),}}/>
       <Tab.Screen name={"BestPerformers"} component={BestPerformers}  options={{title: "Top",headerShown: false, tabBarIcon: ({ color, size }) => (<Ionicons name="analytics-outline" size={size} color={color} />),}}/>
       <Tab.Screen name={"Edit"} component={Edit}options={{title: "Edit",headerShown: false, tabBarIcon: ({ color, size }) => (<Ionicons name="settings" size={size} color={color} />),}}/>
@@ -21,7 +21,6 @@ function Tabs() {
   )
 }
 export default function App() {
-  
   return (
     <NavigationContainer>
       <Stack.Navigator >
