@@ -3,12 +3,12 @@ import React from 'react'
 import { BarChart } from 'react-native-chart-kit';
 import { Dimensions } from "react-native";
 const screenWidth = Dimensions.get("window").width;
-export default function Bar() {
+export default function Bar({trends}) {
     const data = {
         labels: ["January", "February", "March", "April", "May", "June"],
         datasets: [
           {
-            data: [186, 184, 187, 187, 186, 187]
+            data: trends
           }
         ]
       };

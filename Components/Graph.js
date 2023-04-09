@@ -1,12 +1,11 @@
-import { View, Text, Pressable } from 'react-native'
+import { View, Text} from 'react-native'
 import React from 'react'
 import { Dimensions } from "react-native";
 import { LineChart } from 'react-native-chart-kit';
-import { useNavigation } from '@react-navigation/native';
+
 const screenWidth = Dimensions.get("window").width;
 
 export default function Graph({price, timestamp,title, fromDetails, fromTop}) {
-    const navigatoin = useNavigation()
     let backgroundColor, backgroundGradientFrom,backgroundGradientTo;
     if (fromDetails){
       backgroundColor= "#FFFEFD";
@@ -21,10 +20,6 @@ export default function Graph({price, timestamp,title, fromDetails, fromTop}) {
       backgroundGradientFrom = "#15297c";
       backgroundGradientTo="#3e519c";
     }
-    function pressHandler(){
-        console.log("Pressed")
-        navigatoin.navigate("Details")
-    };
     
     const data = {
         labels: timestamp,
@@ -54,7 +49,7 @@ export default function Graph({price, timestamp,title, fromDetails, fromTop}) {
       }
       };
   return (
-    <Pressable style={{marginVertical:1}} onPress={pressHandler }>
+    <View style={{marginVertical:1}} >
     {!fromTop && <Text style={{alignSelf:"center",fontWeight:"bold",fontSize:17}}>{title}</Text>}
     <LineChart
         data={data}
@@ -65,6 +60,7 @@ export default function Graph({price, timestamp,title, fromDetails, fromTop}) {
         style={{
         marginVertical: 8,
         borderRadius: 16,
+        
         }}
     />
     {fromTop && 
@@ -80,6 +76,6 @@ export default function Graph({price, timestamp,title, fromDetails, fromTop}) {
       </View>
    
       }
-    </Pressable>
+    </View>
   )
 }

@@ -1,0 +1,40 @@
+{
+    "coins" : [
+    {
+        "id": "c1",
+        "title": "BTC",
+        "price": [1220, 1245, 1228,1233,1244, 1280, 1299, 1243],
+        "timestamp": [ 9, 15, 19,24,29,2,7],
+        "currentPrice": 2324,
+        "recentMonthsTrends": [186, 184, 187, 187, 186, 187],
+        "marketshare":0.03
+    },
+    {
+        "id": "c2",
+        "title": "ETH",
+        "price": [343, 370, 360,344,333, 328, 345, 320],
+        "timestamp": [ 9, 15, 19,24,29,2,7],
+        "currentPrice": 3424,
+        "recentMonthsTrends": [ 9, 15, 19,24,29,2,7],
+        "marketshare":0.01
+    },
+    {
+        "id": "c3",
+        "title": "VSG",
+        "price": [233, 345, 432,323,433, 432, 401, 234],
+        "timestamp": [ 9, 15, 19,24,29,2,7],
+        "currentPrice": 5434,
+        "recentMonthsTrends": [186, 184, 187, 187, 186, 187],
+        "marketshare":0.04
+       },
+    {
+        "id": "c4",
+        "title": "KDI",
+        "price": [456, 654, 435,464,546, 453, 643, 545],
+        "timestamp": [ 9, 15, 19,24,29,2,7],
+        "currentPrice": 7534,
+        "recentMonthsTrends": [186, 184, 187, 187, 186, 187],
+        "marketshare":0.09
+    }
+  ]
+}

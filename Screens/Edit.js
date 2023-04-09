@@ -3,9 +3,11 @@ import React from 'react'
 import Card from '../Components/UI/Card';
 import { Ionicons } from "@expo/vector-icons";
 export default function Edit() {
+ 
   return (
     <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={{ flexGrow: 1, padding:10,justifyContent:'center'}}>
         <SafeAreaView>
+          <Text>hola</Text>
           <Card>
             <View style={{alignSelf:'center'}}>
             <Ionicons name="trash-outline" size={33} color={"black"} />

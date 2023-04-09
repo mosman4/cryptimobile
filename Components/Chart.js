@@ -3,10 +3,10 @@ import React from 'react'
 import { ProgressChart } from 'react-native-chart-kit';
 import { Dimensions } from "react-native";
 const screenWidth = Dimensions.get("window").width;
-export default function Chart() {
+export default function Chart({marketShare}) {
   const data = {
-    //labels: ["S", "B", "R"], // optional
-    data: [0.4, 0.6, 0.8],
+    labels: ["ETC", "BTC", "RIM"], // optional
+    data: [marketShare, 0.6, 0.8],
     legend: ["Rainy Days"] // optional
   };
   const chartConfig = {
@@ -14,8 +14,8 @@ export default function Chart() {
     backgroundGradientFrom: "#FDFDFE",
     backgroundGradientTo: "#FFFFFF",
     decimalPlaces: 2, // optional, defaults to 2dp
-    color: (opacity = 1) => `rgba(0, 0, 0, ${opacity})`,
-    labelColor: (opacity = 1) => `rgba(0, 0, 0, ${opacity})`,
+    color: (opacity = 1) => `rgba(0, 0, 3, ${opacity})`,
+    labelColor: (opacity = 1) => `rgba(4, 0, 0, ${opacity})`,
     
     propsForDots: {
       r: "6",
@@ -25,7 +25,7 @@ export default function Chart() {
     };
   return (
     <>
-    <Text style={{alignSelf:"center",fontSize:25,marginTop: 20,}}>Market Share</Text>
+    <Text style={{alignSelf:"center",fontSize:25,marginTop: 20,}}>Market Share Comparison</Text>
     <ProgressChart
        data={data}
        width={screenWidth - 20}
