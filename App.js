@@ -8,6 +8,7 @@ import Search from './Screens/Search';
 import BestPerformers from "./Screens/BestPerformers";
 import Edit from "./Screens/Edit";
 import Details from "./Components/Details";
+import DataContextProvider from "./Components/Util/context-store";
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator()
 function Tabs() {
@@ -22,11 +23,13 @@ function Tabs() {
 }
 export default function App() {
   return (
+    <DataContextProvider>
     <NavigationContainer>
       <Stack.Navigator >
       <Stack.Screen name={"Main"} component={Tabs} options={{headerShown:false}}/>
       <Stack.Screen name={"Details"} component={Details} options={{ title:"", presentation: 'modal', headerStyle:{backgroundColor:"#F6F8FACE"}}} />
       </Stack.Navigator>
     </NavigationContainer>
+    </DataContextProvider>
   );
 }

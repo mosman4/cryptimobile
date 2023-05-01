@@ -3,10 +3,10 @@ import React from 'react'
 import { ProgressChart } from 'react-native-chart-kit';
 import { Dimensions } from "react-native";
 const screenWidth = Dimensions.get("window").width;
-export default function Chart({marketShare}) {
+export default function Chart({marketShare,coinName}) {
   const data = {
-    labels: ["ETC", "BTC", "RIM"], // optional
-    data: [marketShare, 0.6, 0.8],
+    labels: [coinName, ], // optional
+    data: [ marketShare],
     legend: ["Rainy Days"] // optional
   };
   const chartConfig = {
@@ -31,7 +31,7 @@ export default function Chart({marketShare}) {
        width={screenWidth - 20}
        height={220}
        strokeWidth={16}
-       radius={32}
+       radius={62}
        chartConfig={chartConfig}
        hideLegend={false}
        style={{

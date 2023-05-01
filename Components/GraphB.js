@@ -5,13 +5,13 @@ import { LineChart } from 'react-native-chart-kit';
 import { Rect, Text as TextSVG, Svg } from "react-native-svg";
 const screenWidth = Dimensions.get("window").width;
 
-export default function Graph({price, timestamp,title, fromDetails, fromTop}) {
+export default function GraphB({price, timestamp,title, fromDetails, fromTop}) {
   let [tooltipPos, setTooltipPos] = useState({ x: 0, y: 0, visible: false, value: 0 })
     let backgroundColor, backgroundGradientFrom,backgroundGradientTo;
     if (fromDetails){
-      backgroundColor= "#FFFEFD";
-      backgroundGradientFrom = "#1B4A29";
-      backgroundGradientTo="#17301C";
+      backgroundColor= "#FFFFFF";
+      backgroundGradientFrom = "#FFFFFF";
+      backgroundGradientTo="#FFFFFF";
     } else if(fromTop){
       backgroundColor= "#e26a00";
       backgroundGradientFrom = "#E67A0D";
@@ -34,17 +34,15 @@ export default function Graph({price, timestamp,title, fromDetails, fromTop}) {
         //legend: ["Rainy Days"] // optional
       };
 
-      
-
       const chartConfig = {
       backgroundColor: backgroundColor,
       backgroundGradientFrom: backgroundGradientFrom,
       backgroundGradientTo: backgroundGradientTo,
-      decimalPlaces: 2, // optional, defaults to 2dp
-      color: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
-      labelColor: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
+      decimalPlaces: 1, // optional, defaults to 2dp
+      color: (opacity = 1) => `rgba(25, 25, 25, ${opacity})`,
+      labelColor: (opacity = 1) => `rgba(20, 25, 25, ${opacity})`,
       style: {
-        borderRadius: 16
+        borderRadius: 15
       },
       propsForDots: {
         r: "6",
@@ -54,15 +52,19 @@ export default function Graph({price, timestamp,title, fromDetails, fromTop}) {
       };
   return (
     <View style={{marginVertical:1}} >
-   
+    {!fromTop && <Text style={{alignSelf:"center",fontWeight:"bold",fontSize:17}}>{title}</Text>}
+    <Text style={{alignSelf:"center",fontSize:25,marginTop: 20,}}>Last 7 days Trend</Text>
+
     <LineChart
         data={data}
         width= {screenWidth - 20}
         height={230}
+        withDots={false}
         withVerticalLines={false}
         chartConfig={chartConfig}
+  
         bezier
-        style={{marginVertical: 8,borderRadius: 16}}
+        style={{marginVertical: 8,borderRadius: 10}}
         yAxisInterval={3}
         decorator={() => {
           return tooltipPos.visible ? <View>
@@ -101,10 +103,10 @@ export default function Graph({price, timestamp,title, fromDetails, fromTop}) {
           setTooltipPos({ x: data.x, value: data.value, y: data.y, visible: true });
       }}
     />
-     {!fromTop && <Text style={{alignSelf:"center",fontWeight:"bold",fontSize:17}}>{title}</Text>}
+    
     {fromTop && 
     
-      <View style={{justifyContent:'space-around',alignItems: 'center',flexDirection:"row", paddingVertical:14,backgroundColor:"#FFFFFF", borderRadius:14,shadowColor:"black",shadowOffset:{width:0,height:0},shadowOpacity:0.04,shadowRadius:8}}>
+      <View style={{justifyContent:'space-around',alignItems: 'center',flexDirection:"row", paddingVertical:14,backgroundColor:"#FFFFFF", borderRadius:10,shadowColor:"black",shadowOffset:{width:0,height:0},shadowOpacity:0.04,shadowRadius:8}}>
       <View style={{alignItems: 'center',}}>
       <Text style={{fontWeight:"bold", fontSize:20}} >{title}</Text>
       </View>

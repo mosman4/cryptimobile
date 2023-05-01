@@ -5,22 +5,14 @@ import { LineChart } from 'react-native-chart-kit';
 import { Rect, Text as TextSVG, Svg } from "react-native-svg";
 const screenWidth = Dimensions.get("window").width;
 
-export default function Graph({price, timestamp,title, fromDetails, fromTop}) {
+export default function GraphC({price, timestamp,title, fromTop}) {
   let [tooltipPos, setTooltipPos] = useState({ x: 0, y: 0, visible: false, value: 0 })
     let backgroundColor, backgroundGradientFrom,backgroundGradientTo;
-    if (fromDetails){
-      backgroundColor= "#FFFEFD";
-      backgroundGradientFrom = "#1B4A29";
-      backgroundGradientTo="#17301C";
-    } else if(fromTop){
+  
       backgroundColor= "#e26a00";
       backgroundGradientFrom = "#E67A0D";
       backgroundGradientTo="#E3760A";
-    } else {
-      backgroundColor= "#15297c";
-      backgroundGradientFrom = "#15297c";
-      backgroundGradientTo="#3e519c";
-    }
+    
     
     const data = {
         labels: timestamp,
@@ -33,8 +25,6 @@ export default function Graph({price, timestamp,title, fromDetails, fromTop}) {
         ],
         //legend: ["Rainy Days"] // optional
       };
-
-      
 
       const chartConfig = {
       backgroundColor: backgroundColor,
@@ -61,6 +51,7 @@ export default function Graph({price, timestamp,title, fromDetails, fromTop}) {
         height={230}
         withVerticalLines={false}
         chartConfig={chartConfig}
+        withDots={false}
         bezier
         style={{marginVertical: 8,borderRadius: 16}}
         yAxisInterval={3}
@@ -101,20 +92,10 @@ export default function Graph({price, timestamp,title, fromDetails, fromTop}) {
           setTooltipPos({ x: data.x, value: data.value, y: data.y, visible: true });
       }}
     />
-     {!fromTop && <Text style={{alignSelf:"center",fontWeight:"bold",fontSize:17}}>{title}</Text>}
-    {fromTop && 
-    
-      <View style={{justifyContent:'space-around',alignItems: 'center',flexDirection:"row", paddingVertical:14,backgroundColor:"#FFFFFF", borderRadius:14,shadowColor:"black",shadowOffset:{width:0,height:0},shadowOpacity:0.04,shadowRadius:8}}>
-      <View style={{alignItems: 'center',}}>
-      <Text style={{fontWeight:"bold", fontSize:20}} >{title}</Text>
-      </View>
-      <View style={{alignItems: 'center'}}>
-        <Text style={{fontWeight:"bold", fontSize:19,color:"#30ca10"}} > Up {fromTop}%</Text>
-        <Text style={{fontWeight:"300", fontSize:18,color:"#47C22E"}} >Next week</Text>
-      </View>
-      </View>
+
+     
    
-      }
+      
     </View>
   )
 }

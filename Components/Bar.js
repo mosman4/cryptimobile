@@ -1,14 +1,13 @@
-import { View, Text } from 'react-native'
 import React from 'react'
 import { BarChart } from 'react-native-chart-kit';
 import { Dimensions } from "react-native";
 const screenWidth = Dimensions.get("window").width;
-export default function Bar({trends}) {
+export default function Bar({names,ranks}) {
     const data = {
-        labels: ["January", "February", "March", "April", "May", "June"],
+        labels: names,
         datasets: [
           {
-            data: trends
+            data: ranks
           }
         ]
       };
@@ -16,7 +15,7 @@ export default function Bar({trends}) {
         backgroundColor: "#EFF3FA",
         backgroundGradientFrom: "#FDFDFE",
         backgroundGradientTo: "#FFFFFF",
-        decimalPlaces: 2, // optional, defaults to 2dp
+        decimalPlaces: 0, // optional, defaults to 2dp
         color: (opacity = 1) => `rgba(0, 0, 0, ${opacity})`,
         labelColor: (opacity = 1) => `rgba(0, 0, 0, ${opacity})`,
         
@@ -31,10 +30,10 @@ export default function Bar({trends}) {
        
         data={data}
         width={screenWidth - 30}
-        height={250}
-        yAxisLabel="$"
+        height={300}
         chartConfig={chartConfig}
-        verticalLabelRotation={30}
+        verticalLabelRotation={40}
+        fromZero={false}
         style={{
             marginVertical: 10,
             borderRadius: 16,
