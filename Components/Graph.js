@@ -67,19 +67,19 @@ export default function Graph({price, timestamp,title, fromDetails, fromTop}) {
         decorator={() => {
           return tooltipPos.visible ? <View>
               <Svg>
-                  <Rect x={tooltipPos.x - 15} 
-                      y={tooltipPos.y + 10} 
-                      width="40" 
+                  <Rect x={tooltipPos.x - 35} 
+                      y={tooltipPos.y + 15} 
+                      width="80" 
                       height="30"
                       fill="black" />
                       <TextSVG
                           x={tooltipPos.x + 5}
-                          y={tooltipPos.y + 30}
+                          y={tooltipPos.y + 35}
                           fill="white"
                           fontSize="16"
                           fontWeight="bold"
                           textAnchor="middle">
-                          {tooltipPos.value}
+                          {tooltipPos.value.toFixed(6)}
                       </TextSVG>
               </Svg>
           </View> : null

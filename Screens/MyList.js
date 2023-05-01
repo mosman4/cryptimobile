@@ -15,8 +15,8 @@ export default function MyList() {
     async function getCoins(){
       try{
         const fetchedCoins = await fetchFarhansData();
-        console.log(fetchedCoins)
-        //dataCxt.addCoins(fetchedCoins)
+        
+        dataCxt.addPredictions(fetchedCoins)
         //setLoading(false) 
       }catch(error){
         alert(error)
@@ -27,12 +27,9 @@ export default function MyList() {
     getCoins()
     },[fetchFarhansData])
 
-
-
     function renderFunction(itemData){
       const item = itemData.item
       function pressHandler(){
-        
         console.log("Pressed")
         navigatoin.navigate("Details",{coinTitle: item.title})
       };
@@ -42,7 +39,7 @@ export default function MyList() {
         <SafeAreaView>
 
           <Pressable onPress={pressHandler}>
-          <Graph title={item.title} price={[23,34,42,32,23,43]} timestamp={[23,34,42,32,23,43]}/>
+          <Graph title={item.title} price={item.firstWeekPrediction} timestamp={[1,2,3,4,5,6,7]}/>
           </Pressable>
               
          </SafeAreaView>
@@ -51,7 +48,7 @@ export default function MyList() {
   return (
     <>
     { isEmpty && 
-      <FlatList keyExtractor={(item) => item.id} data={dataCxt.MyList} renderItem={renderFunction} showsVerticalScrollIndicator={false}  contentContainerStyle = {{flexGrow: 1, justifyContent: 'center',padding:10,paddingVertical:10}} />
+      <FlatList keyExtractor={(item) => item.title} data={dataCxt.MyList} renderItem={renderFunction} showsVerticalScrollIndicator={false}  contentContainerStyle = {{flexGrow: 1, justifyContent: 'center',padding:10,paddingVertical:10}} />
     }
     { isEmpty.length == 0 && 
       Alert.alert("List Is Empty", "Please Add Coins From Search Tap",[{text:"Select Coins",onPress:()=> navigatoin.navigate("Search")}])

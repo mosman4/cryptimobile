@@ -38,7 +38,7 @@ export default function GraphB({price, timestamp,title, fromDetails, fromTop}) {
       backgroundColor: backgroundColor,
       backgroundGradientFrom: backgroundGradientFrom,
       backgroundGradientTo: backgroundGradientTo,
-      decimalPlaces: 1, // optional, defaults to 2dp
+      decimalPlaces: 3, // optional, defaults to 2dp
       color: (opacity = 1) => `rgba(25, 25, 25, ${opacity})`,
       labelColor: (opacity = 1) => `rgba(20, 25, 25, ${opacity})`,
       style: {

@@ -31,7 +31,9 @@ export default function Search() {
      
       function pressHandler1(){
         console.log("Pressed")
-        dataCxt.addToMyList(item)
+        const lucky = dataCxt.coinsWithPrediction.find((coin) => coin.title == item.title)
+        //console.log(item)
+        dataCxt.addToMyList({...item,firstWeekPrediction:lucky.firstWeekPrediction,secondWeekPrediction:lucky.secondWeekPrediction,thirdWeekPrediction:lucky.thirdWeekPrediction,forthWeekPrediction:lucky.forthWeekPrediction,predictedDate:lucky.predictedDate,Mse:lucky.Mse,rMse:lucky.rMse})
       }; 
       function pressHandler2(){
         Alert.alert("Are You Dumb?","Item already in the list")
