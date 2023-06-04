@@ -10,10 +10,34 @@ export default function Details({route}) {
   const [selectedIndex, setSelectedIndex] = useState(0);
   const dataCxt = useContext(DataContext)
   const coinTitle = route.params?.coinTitle
-
-  
   const pressedCoin = dataCxt.MyList.find((p) => p.title == coinTitle)
+  
+  const predictedData = pressedCoin.firstWeekPrediction 
+  const realData = pressedCoin.sparkLine.price.slice(0,7)
+  function calculateRMSE(predictedData, realData) {
+    // Check if the lengths of the arrays match
+    if (predictedData.length !== realData.length) {
+      throw new Error('The lengths of the predictedData and realData arrays must be the same.');
+    }
+  
+    // Calculate the squared differences
+    const squaredDifferences = predictedData.map((predicted, index) => {
+      const real = realData[index];
+      const difference = real - predicted;
+      return difference * difference;
+    });
+  
+    // Calculate the mean of the squared differences
+    const meanSquaredDifference = squaredDifferences.reduce((acc, val) => acc + val, 0) / squaredDifferences.length;
+  
+    // Calculate the root of the mean squared difference
+    const rmse = Math.sqrt(meanSquaredDifference);
+  
+    return rmse;
+  }
 
+  const rmseValue = calculateRMSE(predictedData,realData);
+  
   
   const Window =  <View style={styles.windowShadow}>
             <ButtonGroup
@@ -35,7 +59,7 @@ export default function Details({route}) {
       var month = dateFound.getMonth();
       var date = dateFound.getDate();
       for(var i=0; i<30; i++){
-          var day=new Date(year, month, date + 1 + i);
+          var day=new Date(year, month, date  + i);
           dateObj.push(day.getDate())
           console.log(dateObj);     
       }
@@ -83,17 +107,6 @@ export default function Details({route}) {
 
 
     <View>
-     <View style={{flexDirection:"row",justifyContent:"space-evenly",marginVertical:20}}>
-      <SmallCard>
-        <Text style={{fontWeight:"bold", fontSize:18,marginVertical:10,textAlign:"center"}} >MSE:</Text>
-        <Text style={{fontWeight:"400", fontSize:20, textAlign:"center"}} > {Number(pressedCoin.Mse).toFixed(8)}</Text>
-      </SmallCard>
-      <SmallCard>
-        <Text style={{fontWeight:"bold", fontSize:20,marginVertical:10,textAlign:"center"}} >RMSE:</Text>
-        <Text style={{fontWeight:"400", fontSize:20, textAlign:"center"}} > {Number(pressedCoin.rMse).toFixed(8)}</Text>
-      </SmallCard>     
-     </View>
-
      <View style={{flexDirection:"row",justifyContent:"space-evenly"}}>
       <SmallCard>
         <Text style={{fontWeight:"400", fontSize:18,marginVertical:10}} >Market Cap Rank</Text>
@@ -103,6 +116,12 @@ export default function Details({route}) {
         <Text style={{fontWeight:"400", fontSize:20,marginVertical:10}} >All Time High</Text>
         <Text style={{fontWeight:"400", fontSize:20, textAlign:"center"}} >$ {pressedCoin.ath}</Text>
       </SmallCard>     
+     </View>
+     <View style={{flexDirection:"row",justifyContent:"space-evenly",marginVertical:20}}>
+      
+        <Text style={{fontWeight:"bold", fontSize:20,textAlign:"center"}} >1st Week RMSE:</Text>
+        <Text style={{fontWeight:"400", fontSize:20, textAlign:"center"}} > {Number(rmseValue).toFixed(4)}</Text>
+     
      </View>
      </View>
      

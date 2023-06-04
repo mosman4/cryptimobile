@@ -32,11 +32,11 @@ export default function Search() {
       function pressHandler1(){
         console.log("Pressed")
         const lucky = dataCxt.coinsWithPrediction.find((coin) => coin.title == item.title)
-        //console.log(item)
+        console.log(item)
         dataCxt.addToMyList({...item,firstWeekPrediction:lucky.firstWeekPrediction,secondWeekPrediction:lucky.secondWeekPrediction,thirdWeekPrediction:lucky.thirdWeekPrediction,forthWeekPrediction:lucky.forthWeekPrediction,predictedDate:lucky.predictedDate,Mse:lucky.Mse,rMse:lucky.rMse})
       }; 
       function pressHandler2(){
-        Alert.alert("Are You Dumb?","Item already in the list")
+        Alert.alert("Coin already in the list")
       }; 
       // 
       return(
@@ -55,7 +55,7 @@ export default function Search() {
   return (
     <SafeAreaView>
     <Text style={{fontSize:20, margin:15,marginTop:30}}>Please Add Some Coins: </Text>
-    <FlatList keyExtractor={(item) => item.id} data={dataCxt.coins} renderItem={renderFunction} showsVerticalScrollIndicator={false}  contentContainerStyle = {{flexGrow: 1, justifyContent: 'center',padding:10,paddingVertical:10}} />
+    <FlatList keyExtractor={(item) => item.title} data={dataCxt.coins} renderItem={renderFunction} showsVerticalScrollIndicator={false}  contentContainerStyle = {{flexGrow: 1, justifyContent: 'center',padding:10,paddingVertical:10}} />
     </SafeAreaView>
   )
   

@@ -1,4 +1,4 @@
-import { Alert, Pressable, SafeAreaView, StyleSheet} from 'react-native';
+import { Alert, Pressable, SafeAreaView, StyleSheet,Text, Button,View} from 'react-native';
 import React, { useContext, useEffect} from 'react'
 import Graph from '../Components/Graph';
 import { FlatList } from 'react-native-gesture-handler';
@@ -51,7 +51,10 @@ export default function MyList() {
       <FlatList keyExtractor={(item) => item.title} data={dataCxt.MyList} renderItem={renderFunction} showsVerticalScrollIndicator={false}  contentContainerStyle = {{flexGrow: 1, justifyContent: 'center',padding:10,paddingVertical:10}} />
     }
     { isEmpty.length == 0 && 
-      Alert.alert("List Is Empty", "Please Add Coins From Search Tap",[{text:"Select Coins",onPress:()=> navigatoin.navigate("Search")}])
+    <View style={styles.container}>
+    <Text>Your List is Empty !</Text>
+    <Button title={"Add Coins to your list"} onPress={()=> navigatoin.navigate("Search")}/>
+    </View>
       
     }
     </>
@@ -60,8 +63,8 @@ export default function MyList() {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: '#fff',
+    flex: 15,
+    
     alignItems: 'center',
     justifyContent: 'center',
     
@@ -69,20 +72,3 @@ const styles = StyleSheet.create({
 });
 
 
-
-  //  useEffect(()=> { 
-  //   async function getCoins(){
-  //     try{
-  //       const fetchedCoins = await fetchMetricsHandler();
-  //       dataCxt.addCoins(fetchedCoins)
-  //       //setLoading(false)
-        
-        
-  //     }catch(error){
-  //       alert(error)
-  //       //setLoading(false)
-  //       console.log(error)
-  //     }
-  //   }
-  //   getCoins()
-  //   },[fetchMetricsHandler])

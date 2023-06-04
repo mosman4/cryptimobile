@@ -1,7 +1,7 @@
 import { createContext, useState,useRef } from "react";
 
 export const DataContext = createContext({
-    coins:[],
+    coins:[], 
     TopCoins:[],
     MyList:[],
     coinsWithPrediction:[],
